@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MikeGShelby/README-generator/issues"
   },
-  "homepage": "https://github.com/MikeGShelby/README-generator#readme"
+  "homepage": "https://github.com/MikeGShelby/README-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
 }
