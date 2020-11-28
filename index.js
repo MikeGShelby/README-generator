@@ -4,19 +4,6 @@ const fs = require('fs');
 const generateREADME = require('./src/readme-template');
 
 
-
-
-
-// const documentREADME = generatePage(title, github);
-
-// fs.writeFile('./dist/README.md', generatePage(title, github), err => {
-//     if (err) throw err;
-
-//     console.log('README complete! Check out README.md to see the output!');
-// });
-
-
-
 const promptUser = () => {
     console.log(`
     =================
@@ -137,22 +124,6 @@ const promptUser = () => {
           },
     ])
 }
-
-// TEMP DATA
-// const mockData = {
-//     title: 'Project Title 6',
-//     description: 'This information provides details about this project. Additional details may include information about which tools were used to create this.',
-//     installation: 'installation instructions',
-//     usage: 'usage information',
-//     license: 'GNU AGPLv3',
-//     contributing:'Shawnie, Dodie, Mike',
-//     tests:'test information',
-//     githubUser: 'mikeshelby',
-//     email: 'mikeshelby@gmail.com',
-//     contactInstructions:'email for more info',
-// }
-
-// const documentREADME = generatePage(mockData);
 
 promptUser()
     .then(readmeData => {

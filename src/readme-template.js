@@ -75,7 +75,6 @@ return `
 ## Usage
 ${usage}
 `;
-
 };
 
 // FUNCTION: create the license section/title
@@ -165,7 +164,6 @@ return `
 ${tests}
 `;
 };
-
 
 // FUNCTION: will take data input from user and add it to a README template
 module.exports = templateData => {

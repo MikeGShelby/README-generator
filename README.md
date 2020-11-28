@@ -13,10 +13,13 @@ Lastly, an optional table of contents can also be generated. This will be create
 * Inquirer.js
 
 ## Application Screenshot
-![README Generator Screenshot](https://github.com/mikegshelby/portfolio/raw/master/assets/images/README-generator-screenshot.jpg "Application Screenshot")
+![README Generator Screenshot](https://github.com/mikegshelby/readme-generator/raw/main/assets/images/README-generator-screenshot.jpg "Application Screenshot")
 
 ## Application Demo Video
 https://drive.google.com/file/d/1Rx72HVOKTqfv7dNgwwMJN5G5UefzU97P/view
+
+## Sample README file (created using this application)
+https://github.com/MikeGShelby/README-generator/tree/main/dist
 
 
 
