@@ -17,15 +17,15 @@ const generateQuestionsSection = (confirmQuestions, githubUser, email, contactIn
       return '';
     }
 
-    return `
-    ## QUESTIONS
+return `
+## Questions
 
-    ### GITHUB USERNAME: ${githubUser}
-    ### GITHUB PROFILE LINK: https://github.com/${githubUser}
+### Github Username: ${githubUser}
+### Github Profile: https://github.com/${githubUser}
 
-    ### EMAIL: ${email}
-    ### INSTRUCTIONS ON HOW TO REACH ME: ${contactInstructions}
-    `;
+### Email: ${email}
+### Instructions on how to reach me: ${contactInstructions}
+`;
   };
 
 
@@ -35,10 +35,10 @@ const generateInstallationSection = (installation) => {
       return '';
     }
 
-    return `
-    ## INSTALLATION
-    ${installation}
-    `;
+return `
+## INSTALLATION
+${installation}
+`;
   };
 
 // FUNCTION: create the usage section
@@ -47,45 +47,55 @@ const generateUsageSection = (usage) => {
       return '';
     }
 
-    return `
-    ## USAGE
-    ${usage}
-    `;
+return `
+## USAGE
+${usage}
+`;
   };
 
 
-  [, , , 'GNU LGPLv3', 'Mozilla Public License 2.0', 'jQuApache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
+  [, , , , 'Mozilla Public License 2.0', 'jQuApache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
 
-// FUNCTION: create the license section. Evaluate for which license has been selected and display corresponding license badge with URL link to additional license info.
+// FUNCTION: create the license section/title
 const generateLicenseSection = (license) => {
 
-    switch (license) {
-        case 'none':
-        case !license:
-            return '';
-        case 'GNU AGPLv3':
+if (!license) {
+return '';
+}
+
 return `
-## LICENSE
+## License
 ${license}
+`;
+};
+
+// FUNCTION: create the license badge. Evaluate for which license has been selected and display corresponding license badge with URL link to additional license info.
+const generateLicenseBadge = (license) => {
+
+switch (license) {
+
+case 'none':
+case !license:
+return '';
+
+case 'GNU AGPLv3':
+return `
 ${gnuAgplV3Badge}
 `;
-        case 'GNU GPLv3':
+
+case 'GNU GPLv3':
 return `
-## LICENSE
-${license}
 ${gnuGplV3Badge}
 `;
-      }
 
-    // if (!license || license==='none') {
-    //   return '';
-    // }
+case 'GNU LGPLv3':
+return `
+${gnuLgplV3Badge}
+`;
+}
+};
 
-    // return `
-    // ## LICENSE
-    // ${license}
-    // `
-  };
+
 
 
 // FUNCTION: will take data input from user and add it to a README template
@@ -99,15 +109,15 @@ module.exports = templateData => {
 
     return `
 
-    # PROJECT TITLE ${title}
+# ${title}${generateLicenseBadge(license)}
 
-    ## DESCRIPTION ${description}
+## ${description}
 
-    ## TABLE OF CONTENTS
-    ${generateInstallationSection(installation)}${generateUsageSection(usage)}${generateLicenseSection(license)}
-    ## CONTRIBUTING
-    ## TESTS
-    ${generateQuestionsSection(confirmQuestions, githubUser, email, contactInstructions)}
-    `;
+## TABLE OF CONTENTS
+${generateInstallationSection(installation)}${generateUsageSection(usage)}${generateLicenseSection(license)}${generateLicenseBadge(license)}
+## CONTRIBUTING
+## TESTS
+${generateQuestionsSection(confirmQuestions, githubUser, email, contactInstructions)}
+`;
   };
 
