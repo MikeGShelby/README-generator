@@ -1,26 +1,16 @@
 
 
-    # example title 2
+    # PROJECT TITLE title new
 
-    ## [DESCRIPTION]
+    ## DESCRIPTION info
 
-    ## [TABLE OF CONTENTS]
+    ## TABLE OF CONTENTS
+    
+## LICENSE
+GNU AGPLv3
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-    ## [INSTALLATION]
-
-    ## [USAGE]
-
-    ## [LICENSE]
-
-    ## [CONTRIBUTING]
-
-    ## [TESTS]
-
-    ## [QUESTIONS]
-        ### [GITHUB USERNAME] mikegshelby
-        ### [GITHUB PROFILE LINK] https://github.com/mikegshelby
-
-        ### [EMAIL ADDRESS]
-        ### [INSTRUCTIONS ON HOW TO REACH ME]
-
+    ## CONTRIBUTING
+    ## TESTS
+    
     

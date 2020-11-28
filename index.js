@@ -1,19 +1,9 @@
 // DEPENDENCIES
 const inquirer = require('inquirer');
-// const fs = require('fs');
-// const generatePage = require('./src/readme-template');
+const fs = require('fs');
+const generateREADME = require('./src/readme-template');
 
-// LICENSE BADGES
-apacheBadge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
-BoostBadge = '[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)';
-bsd2Badge = '[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)';
-bsd3Badge = '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)';
-mitBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-unlicenseBadge = '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)';
-gnuAgplV3Badge = '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)'
-gnuGplV3Badge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
-gnuLgplV3Badge = '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)';
-mozillaLicenseBadge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
+
 
 
 
@@ -27,7 +17,7 @@ mozillaLicenseBadge = '[![License: MPL 2.0](https://img.shields.io/badge/License
 
 
 
-const promptProject = () => {
+const promptUser = () => {
     console.log(`
     =================
     CREATE A NEW README
@@ -78,7 +68,7 @@ const promptProject = () => {
             type: 'list',
             name: 'license',
             message: 'Select a license',
-            choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'jQuApache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
+            choices: ['none', 'GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'jQuApache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
         },
 
         {
@@ -104,19 +94,6 @@ const promptProject = () => {
             type: 'input',
             name: 'githubUser',
             message: 'What is your GitHub user name? (Required)',
-            when: ({ confirmQuestions }) => {
-              if (confirmQuestions) {
-                return true;
-              } else {
-                return false;
-              }
-            }
-          },
-
-          {
-            type: 'input',
-            name: 'githubProfile',
-            message: 'Provide a link to your GitHub profile (Required)',
             when: ({ confirmQuestions }) => {
               if (confirmQuestions) {
                 return true;
@@ -154,8 +131,29 @@ const promptProject = () => {
     ])
 }
 
+// TEMP DATA
+// const mockData = {
+//     title: 'Project Title 6',
+//     description: 'This information provides details about this project. Additional details may include information about which tools were used to create this.',
+//     installation: 'installation instructions',
+//     usage: 'usage information',
+//     license: 'GNU AGPLv3',
+//     contributing:'Shawnie, Dodie, Mike',
+//     tests:'test information',
+//     githubUser: 'mikeshelby',
+//     email: 'mikeshelby@gmail.com',
+//     contactInstructions:'email for more info',
+// }
 
-promptProject()
+// const documentREADME = generatePage(mockData);
+
+promptUser()
     .then(readmeData => {
-    console.log(readmeData);
-});
+        const documentREADME = generateREADME(readmeData);
+
+        fs.writeFile('./dist/README.md', documentREADME, err => {
+          if (err) throw new Error(err);
+
+          console.log('README document created! Check out README.md in the ./dist folder to see it!');
+        });
+    });
