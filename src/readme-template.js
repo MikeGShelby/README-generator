@@ -17,13 +17,13 @@ const generateTOCheader = (confirmTableOfContents) => {
 return `## Table of Contents`
 }
 
+// FUNCTION: create list of items for table of contents
 const generateTOCitems = (installation, usage, license, contributing, tests, confirmQuestions) => {
-
 
 // declare empty array for table of content items
 let itemArr = []
 
-// If section contains content, then add that section title to an array
+// If section contains content, then add that section title to itemArr
 installation ? itemArr.push("* [Installation](#installation)"): null;
 usage ? itemArr.push("* [Usage](#usage)"): null;
 license ? itemArr.push("* [License](#license)"): null;
@@ -31,10 +31,9 @@ contributing ? itemArr.push("* [Contributing](#contributing)"): null;
 tests ? itemArr.push("* [Tests](#tests)"): null;
 confirmQuestions ? itemArr.push("* [Questions](#questions)"): null;
 
+// return all items in itemArr, but list each item on a separate line
 return itemArr.join('\n');
-
 }
-
 
 // FUNCTION: create the questions section
 const generateQuestionsSection = (confirmQuestions, githubUser, email, contactInstructions) => {
@@ -174,10 +173,7 @@ module.exports = templateData => {
     // destructure inputs from templateData based on their property key names
     const { title, description, confirmTableOfContents, installation, usage, license, contributing, tests, confirmQuestions, githubUser, email, contactInstructions} = templateData;
 
-    // const { title, description, installation, usage, license, contributing, tests, confirmQuestions, githubUser, email, contactInstructions} = templateData;
-
     return `
-
 # ${title}${generateLicenseBadge(license)}
 ## Description
 ${description}
