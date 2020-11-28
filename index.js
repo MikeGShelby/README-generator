@@ -85,6 +85,13 @@ const promptUser = () => {
 
         {
             type: 'confirm',
+            name: 'confirmTableOfContents',
+            message: 'Would you like to add a table of contents?',
+            default: true
+          },
+
+        {
+            type: 'confirm',
             name: 'confirmQuestions',
             message: 'Would you like to add a Questions sections that includes contact information?',
             default: true
