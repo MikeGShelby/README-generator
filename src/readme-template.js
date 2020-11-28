@@ -44,9 +44,11 @@ const generateQuestionsSection = (confirmQuestions, githubUser, email, contactIn
 return `
 ## Questions
 Github Username: ${githubUser}
+
 Github Profile: https://github.com/${githubUser}
 
 Email: ${email}
+
 ${contactInstructions}
 `;
   };
